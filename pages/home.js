@@ -37,14 +37,18 @@ export default class Home extends PureComponent {
   }
 
   async componentDidMount() {
-    const request = await fetch("localhost:3000/events/future", {
-      method: "GET"
-    });
+    try {
+      const request = await fetch("localhost:3000/events/future", {
+        method: "GET"
+      });
 
-    const matches = await request.json();
+      const matches = await request.json();
 
-    this.setState({ matches });
-    console.log(matches);
+      this.setState({ matches });
+      console.log(matches);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
