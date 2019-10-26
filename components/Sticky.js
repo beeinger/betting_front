@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Jumbotron, Container, Button } from "react-bootstrap";
+import { Icon } from "semantic-ui-react";
 
 export default class Sticky extends Component {
   sticky() {}
@@ -10,22 +11,23 @@ export default class Sticky extends Component {
           <Button
             style={{
               marginTop: "2vh",
-              marginLeft: "2vw"
+              marginLeft: "10vw"
             }}
           >
-            Energia
+            {"Energia "}
+            <Icon className="battery full" />
           </Button>
         </Col>
         <Col>
           <Button
-            className="sticky"
             style={{
               float: "right",
               marginTop: "2vh",
               marginRight: "2vw"
             }}
           >
-            Stan konta
+            {"Stan konta "}
+            <Icon className="plus" />
           </Button>
         </Col>
       </Row>
