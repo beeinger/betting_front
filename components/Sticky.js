@@ -6,31 +6,36 @@ export default class Sticky extends Component {
   sticky() {}
   render() {
     return (
-      <Row style={{ position: "sticky", top: 0 }}>
-        <Col>
-          <Button
-            style={{
-              marginTop: "2vh",
-              marginLeft: "10vw"
-            }}
-          >
-            {"Energia "}
-            <Icon className="battery full" />
-          </Button>
-        </Col>
-        <Col>
-          <Button
-            style={{
-              float: "right",
-              marginTop: "2vh",
-              marginRight: "2vw"
-            }}
-          >
-            {"Stan konta "}
-            <Icon className="plus" />
-          </Button>
-        </Col>
-      </Row>
+      <Jumbotron
+        style={{
+          position: "sticky",
+          top: 0,
+          maxHeight: "2vh",
+          paddingTop: "1vh",
+          marginBottom: "0vh"
+        }}
+      >
+        <Button
+          style={{
+            marginTop: "2vh",
+            marginLeft: "10vw"
+          }}
+        >
+          {"Energia "}
+          <Icon className="battery full" />
+        </Button>
+
+        <Button
+          style={{
+            float: "right",
+            marginTop: "2vh",
+            marginRight: "2vw"
+          }}
+        >
+          {"Stan konta "}
+          <Icon className="plus" />
+        </Button>
+      </Jumbotron>
     );
   }
 }
