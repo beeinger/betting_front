@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import dynamic from "next/dynamic";
-import { Row, Col, Jumbotron, Container, Navbar } from "react-bootstrap";
+import { Row, Col, Jumbotron, Container, Button } from "react-bootstrap";
+import Sticky from "../components/Sticky";
 
 const Layout = dynamic(() => import("../components/Layout/Layout"), {
   ssr: false
@@ -10,23 +11,12 @@ export default class Home extends Component {
   render() {
     return (
       <Layout>
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/home">
-            <img
-              alt=""
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />
-            {" React Bootstrap"}
-          </Navbar.Brand>
-        </Navbar>
+        <Sticky />
         <Container>
           <Row>
             <Col></Col>
             <Col>
-              <Jumbotron></Jumbotron>
+              <Jumbotron style={{ minHeight: "150vh" }}></Jumbotron>
             </Col>
             <Col></Col>
           </Row>

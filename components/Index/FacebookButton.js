@@ -1,7 +1,7 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 import { Button } from "react-bootstrap";
-import Router from "next/dist/next-server/lib/router/router";
+import Router from "next/router";
 
 class FacebookButton extends React.Component {
   constructor(props) {
@@ -30,8 +30,12 @@ class FacebookButton extends React.Component {
         if (window.FB) {
           var fbdata = await window.FB.getAuthResponse();
           if (fbdata && "accessToken" in fbdata) {
-            if (this.state.facebookData !== fbdata) {
-              this.setState({ facebookData: fbdata });
+            if (window.sessionStorage.getItem("facebookData") !== fbdata) {
+              window.sessionStorage.setItem(
+                "facebookData",
+                JSON.stringify(fbdata)
+              );
+              Router.push("/home");
               var respo = false;
               fetch(this.state.api_address, {
                 method: "post",
@@ -44,7 +48,6 @@ class FacebookButton extends React.Component {
               });
               if (respo && respo !== this.state.response) {
                 this.setState({ response: respo });
-                Router.push("/home");
               }
             }
           }
@@ -57,24 +60,14 @@ class FacebookButton extends React.Component {
     return (
       <div>
         {/* https://www.npmjs.com/package/react-facebook-login - for info about editting */}
-        {this.state.facebookData ? (
-          <Button
-            variant="primary"
-            onClick={() => {
-              window.FB.logout() & this.facebookHandler("logout");
-            }}
-          >
-            Log out
-          </Button>
-        ) : (
-          <FacebookLogin
-            appId="2173246342969843"
-            autoLoad={true}
-            fields="name,email"
-            scope="public_profile,user_friends,email,user_birthday"
-            callback={() => this.facebookHandler("login")}
-          />
-        )}
+
+        <FacebookLogin
+          appId="2173246342969843"
+          autoLoad={true}
+          fields="name,email"
+          scope="public_profile,user_friends,email,user_birthday"
+          callback={() => this.facebookHandler("login")}
+        />
       </div>
     );
   }

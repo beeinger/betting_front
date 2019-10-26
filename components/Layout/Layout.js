@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Provider, Subscribe } from "unstated";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import "bootstrap-css-only/css/bootstrap.min.css";
+import { Navbar } from "react-bootstrap";
 
 // dynamic imports (using window inside components) - import dynamic from "next/dynamic";
 // routing (changing pages etc) - import Router from "next/router";
@@ -43,7 +44,12 @@ export default class Layout extends PureComponent {
           </Subscribe> */}
         </Provider>
         <style jsx global>
-          {``}
+          {`
+            .sticky {
+              position: sticky;
+              top: 0;
+            }
+          `}
         </style>
       </div>
     );
