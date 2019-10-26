@@ -9,6 +9,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "semantic-ui-css/semantic.min.css";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+import Sticky from "../Sticky";
 
 // dynamic imports (using window inside components) - import dynamic from "next/dynamic";
 // routing (changing pages etc) - import Router from "next/router";
@@ -58,13 +59,18 @@ export default class Layout extends PureComponent {
             }
           >
             <Sidebar />
+
             <div onClick={() => sidebarContainer.setState({ expanded: false })}>
               {children}
             </div>
           </Swipeable>
         </Provider>
         <style jsx global>
-          {``}
+          {`
+            .sticky {
+              background-image: url("../../static/images/bg.jpg");
+            }
+          `}
         </style>
       </div>
     );
