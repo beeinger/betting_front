@@ -1,7 +1,9 @@
 const withCSS = require("@zeit/next-css");
 
-module.exports = withCSS({
+const nextConfig = {
   cssLoaderOptions: {
     url: false
   }
-});
+};
+
+module.exports = withCSS(nextConfig);

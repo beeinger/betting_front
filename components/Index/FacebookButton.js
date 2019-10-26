@@ -1,6 +1,7 @@
 import React from "react";
 import FacebookLogin from "react-facebook-login";
 import { Button } from "react-bootstrap";
+import Router from "next/dist/next-server/lib/router/router";
 
 class FacebookButton extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class FacebookButton extends React.Component {
               });
               if (respo && respo !== this.state.response) {
                 this.setState({ response: respo });
+                Router.push("/home");
               }
             }
           }
